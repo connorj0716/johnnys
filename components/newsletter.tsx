@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import React from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,13 @@ export function Newsletter() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const timestampElement = document.getElementById('local-timestamp-newsletter')
+    if (timestampElement) {
+      timestampElement.value = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+    }
+  }, [])
 
   const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -67,6 +74,8 @@ export function Newsletter() {
                 className="flex-1"
               />
               <input type="hidden" name="source" value="bottom" />
+              <input type="hidden" name="timestamp" value="x-sheetmonkey-current-date-time" />
+              <input type="hidden" name="local_timestamp" value="" id="local-timestamp-newsletter" />
               <Button
                 type="submit"
                 size="lg"

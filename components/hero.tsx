@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { MapPin, Clock, ShoppingBag } from "lucide-react"
@@ -9,6 +9,13 @@ export function Hero() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const timestampElement = document.getElementById('local-timestamp-hero')
+    if (timestampElement) {
+      timestampElement.value = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+    }
+  }, [])
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
@@ -153,6 +160,8 @@ export function Hero() {
                   className="flex-1 h-9 text-sm bg-white/15 border-white/20 text-white placeholder:text-white/50 focus:bg-white/25"
                 />
                 <input type="hidden" name="source" value="hero" />
+                <input type="hidden" name="timestamp" value="x-sheetmonkey-current-date-time" />
+                <input type="hidden" name="local_timestamp" value="" id="local-timestamp-hero" />
                 <Button
                   type="submit"
                   size="sm"

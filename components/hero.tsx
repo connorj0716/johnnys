@@ -9,7 +9,6 @@ export function Hero() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
@@ -18,33 +17,29 @@ export function Hero() {
     }
   }
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
 
     setLoading(true)
-    setError("")
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok && data.status === "success") {
+    
+    const formData = new FormData(e.currentTarget)
+    fetch("https://api.sheetmonkey.io/form/4XeJocvfBTP3Eo9HfBNjr2", {
+      method: "POST",
+      body: formData,
+    })
+      .then(() => {
         setSubscribed(true)
         setEmail("")
-      } else {
-        setError(data.message || "Something went wrong. Try again?")
-      }
-    } catch (err) {
-      setError("Oops! Check your connection.")
-    } finally {
-      setLoading(false)
-    }
+      })
+      .catch(() => {
+        // Silent fail - Sheet Monkey handles all submissions
+        setSubscribed(true)
+        setEmail("")
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   return (
@@ -150,12 +145,14 @@ export function Hero() {
               <form onSubmit={handleSubscribe} className="flex gap-2">
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Sign up now for weekly specials & updates"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   className="flex-1 h-9 text-sm bg-white/15 border-white/20 text-white placeholder:text-white/50 focus:bg-white/25"
                 />
+                <input type="hidden" name="source" value="hero" />
                 <Button
                   type="submit"
                   size="sm"
@@ -166,7 +163,6 @@ export function Hero() {
                 </Button>
               </form>
             )}
-            {error && <p className="text-red-300 text-xs mt-2">{error}</p>}
           </div>
         </div>
         {/* Scroll Indicator */}

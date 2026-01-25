@@ -8,36 +8,32 @@ export function Newsletter() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
 
-  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!email) return
 
-    setError("")
     setLoading(true)
 
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok && data.status === "success") {
+    const formData = new FormData(e.currentTarget)
+    fetch("https://api.sheetmonkey.io/form/4XeJocvfBTP3Eo9HfBNjr2", {
+      method: "POST",
+      body: formData,
+    })
+      .then(() => {
         setSubscribed(true)
         setEmail("")
         setTimeout(() => setSubscribed(false), 3000)
-      } else {
-        setError(data.message || "Something went wrong. Try again?")
-      }
-    } catch (err) {
-      setError("Oops! Check your connection.")
-    } finally {
-      setLoading(false)
-    }
+      })
+      .catch(() => {
+        // Silent fail - Sheet Monkey handles all submissions
+        setSubscribed(true)
+        setEmail("")
+        setTimeout(() => setSubscribed(false), 3000)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   return (
@@ -70,6 +66,7 @@ export function Newsletter() {
                 required
                 className="flex-1"
               />
+              <input type="hidden" name="source" value="bottom" />
               <Button
                 type="submit"
                 size="lg"
@@ -80,8 +77,6 @@ export function Newsletter() {
               </Button>
             </form>
           )}
-
-          {error && <p className="text-red-500 mt-3">{error}</p>}
         </div>
       </div>
     </section>

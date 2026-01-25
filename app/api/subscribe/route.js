@@ -2,17 +2,21 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request) {
   try {
-    let body;
-    try {
-      body = await request.json();
-    } catch (jsonErr) {
-      console.error('JSON parse error:', jsonErr.message);
-      return NextResponse.json({ status: 'error', message: 'Invalid request body' }, { status: 400 });
+    // Safely parse body – skip if no content
+    let body = {};
+    const contentType = request.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      try {
+        body = await request.json();
+      } catch (jsonErr) {
+        console.error('JSON parse failed:', jsonErr.message);
+        return NextResponse.json({ status: 'error', message: 'Invalid JSON body' }, { status: 400 });
+      }
     }
 
     const { email } = body;
 
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
+    if (!email || typeof email !== 'string' || !email.trim() || !email.includes('@')) {
       return NextResponse.json({ status: 'error', message: 'Valid email required' }, { status: 400 });
     }
 
@@ -23,25 +27,22 @@ export async function POST(request) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
       redirect: 'follow',
+      cache: 'no-store', // Prevent any caching issues
     });
 
     if (!response.ok) {
-      const errorText = await response.text().catch(() => 'No response text');
-      console.error('Apps Script response failed:', response.status, errorText);
-      return NextResponse.json({ status: 'error', message: 'Failed to subscribe to sheet' }, { status: response.status });
+      const errorText = await response.text().catch(() => 'Unknown error');
+      console.error('Apps Script failed:', response.status, errorText);
+      return NextResponse.json({ status: 'error', message: 'Failed to add to sheet' }, { status: response.status });
     }
-
-    const result = await response.json().catch(() => ({ status: 'unknown' }));
-    console.log('Apps Script success:', result);
 
     return NextResponse.json({ status: 'success' });
   } catch (error) {
-    console.error('Proxy handler error:', error.message, error.stack);
-    return NextResponse.json({ status: 'error', message: 'Internal server error - check Vercel logs' }, { status: 500 });
+    console.error('API route error:', error.message, error.stack);
+    return NextResponse.json({ status: 'error', message: 'Internal server error' }, { status: 500 });
   }
 }
 
-// Optional: Handle GET for testing (visit /api/subscribe in browser)
 export async function GET() {
-  return NextResponse.json({ message: 'API route is live - use POST for subscriptions' });
+  return NextResponse.json({ message: 'API route is live! Use POST from the form to subscribe.' });
 }

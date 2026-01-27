@@ -4,25 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { MapPin, Clock, ShoppingBag } from "lucide-react"
 
-/* Animated subheadline at character-level */
-function AnimatedSubheadline() {
-  const text = "A Local Breakfast & Lunch Café in Manahawkin, NJ"
-
-  return (
-    <span className="subheadline">
-      {text.split("").map((char, i) => (
-        <span
-          key={i}
-          className="subheadline-char text-base"
-          style={{ animationDelay: `${1.45 + i * 0.03}s` }}
-        >
-          {char}
-        </span>
-      ))}
-    </span>
-  )
-}
-
 export function Hero() {
   const [email, setEmail] = useState("")
   const [subscribed, setSubscribed] = useState(false)
@@ -82,12 +63,12 @@ export function Hero() {
           }
         }
 
-        @keyframes leftToRightChar {
+        @keyframes wipeReveal {
           from {
-            clip-path: inset(0 100% 0 0);
+            clip-path: inset(0 100% 0 0); /* fully clipped from right */
           }
           to {
-            clip-path: inset(0 0 0 0);
+            clip-path: inset(0 0 0 0); /* fully revealed left to right */
           }
         }
 
@@ -97,11 +78,17 @@ export function Hero() {
           animation-delay: 0.3s;
         }
 
-        .subheadline-char {
+        .subheadline-container {
+          overflow: hidden;
+          display: inline-block;
+        }
+
+        .subheadline-reveal {
           display: inline-block;
           clip-path: inset(0 100% 0 0);
-          animation: leftToRightChar 0.35s ease-out forwards;
-          white-space: pre;
+          animation: wipeReveal 1.8s ease-out forwards;
+          animation-delay: 1.45s;
+          white-space: normal; /* allows line breaks */
         }
       `}</style>
 
@@ -129,7 +116,11 @@ export function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl mx-auto text-pretty">
-            <AnimatedSubheadline />
+            <span className="subheadline-container">
+              <span className="subheadline-reveal">
+                A Local Breakfast & Lunch Café in Manahawkin, NJ
+              </span>
+            </span>
           </p>
 
           <div className="hidden md:flex items-center justify-center gap-2 text-white/80 mb-6">

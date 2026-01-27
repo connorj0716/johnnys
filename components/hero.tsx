@@ -110,7 +110,7 @@ export function Hero() {
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl mx-auto text-pretty">
             <span className="subheadline-container">
-              <span className="subheadline-reveal">
+              <span className="subheadline-reveal text-base">
                 A Local Breakfast & Lunch Café in Manahawkin, NJ
               </span>
             </span>

@@ -76,15 +76,10 @@ export function Hero() {
           animation: fadeInUp 1.2s ease-out forwards;
           animation-delay: 0.3s;
         }
-        .subheadline-container {
-          overflow: hidden;
+        .subheadline-word {
           display: inline-block;
-        }
-        .subheadline-reveal {
-          /* Start fully clipped so invisible initially */
           clip-path: inset(0 100% 0 0);
           animation: wipeReveal 1.8s ease-out forwards;
-          animation-delay: 1.45s; /* starts right after headline finishes */
         }
       `}</style>
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
@@ -109,11 +104,15 @@ export function Hero() {
             Johnny's Offshore Café
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl mx-auto text-pretty">
-            <span className="subheadline-container">
-              <span className="subheadline-reveal">
-                A Local Breakfast & Lunch Café in Manahawkin, NJ
-              </span>
-            </span>
+            <span className="subheadline-word" style={{ animationDelay: "1.45s" }}>A</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.53s" }}>Local</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.61s" }}>Breakfast</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.69s" }}>&</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.77s" }}>Lunch</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.85s" }}>Café</span>
+            <span className="subheadline-word" style={{ animationDelay: "1.93s" }}>in</span>
+            <span className="subheadline-word" style={{ animationDelay: "2.01s" }}>Manahawkin,</span>
+            <span className="subheadline-word" style={{ animationDelay: "2.09s" }}>NJ</span>
           </p>
           <div className="hidden md:flex items-center justify-center gap-2 text-white/80 mb-6">
             <MapPin className="h-4 w-4" />

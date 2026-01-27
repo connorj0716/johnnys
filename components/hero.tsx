@@ -77,14 +77,18 @@ export function Hero() {
           animation-delay: 0.3s;
         }
         .subheadline-container {
-          overflow: hidden;
+          display: inline;
+        }
+        .subheadline-word {
           display: inline-block;
+          overflow: hidden;
+          margin-right: 0.25em;
         }
         .subheadline-reveal {
           /* Start fully clipped so invisible initially */
           clip-path: inset(0 100% 0 0);
-          animation: wipeReveal 1.8s ease-out forwards;
-          animation-delay: 1.45s; /* starts right after headline finishes */
+          animation: wipeReveal 0.6s ease-out forwards;
+          display: inline-block;
         }
       `}</style>
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
@@ -110,9 +114,18 @@ export function Hero() {
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl mx-auto text-pretty">
             <span className="subheadline-container">
-              <span className="subheadline-reveal">
-                A Local Breakfast & Lunch Café in Manahawkin, NJ
-              </span>
+              {["A", "Local", "Breakfast", "&", "Lunch", "Café", "in", "Manahawkin,", "NJ"].map((word, index) => (
+                <span key={index} className="subheadline-word">
+                  <span 
+                    className="subheadline-reveal"
+                    style={{
+                      animationDelay: `${1.45 + index * 0.6}s`
+                    }}
+                  >
+                    {word}
+                  </span>
+                </span>
+              ))}
             </span>
           </p>
           <div className="hidden md:flex items-center justify-center gap-2 text-white/80 mb-6">

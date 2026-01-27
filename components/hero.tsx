@@ -1,9 +1,27 @@
 "use client"
-import React from "react"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { MapPin, Clock, ShoppingBag } from "lucide-react"
+
+/* Animated subheadline at character-level */
+function AnimatedSubheadline() {
+  const text = "A Local Breakfast & Lunch Café in Manahawkin, NJ"
+
+  return (
+    <span className="subheadline">
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          className="subheadline-char text-base"
+          style={{ animationDelay: `${1.45 + i * 0.03}s` }}
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  )
+}
 
 export function Hero() {
   const [email, setEmail] = useState("")
@@ -11,9 +29,11 @@ export function Hero() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    const timestampElement = document.getElementById('local-timestamp-hero')
+    const timestampElement = document.getElementById("local-timestamp-hero")
     if (timestampElement) {
-      timestampElement.value = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+      timestampElement.value = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+      })
     }
   }, [])
 
@@ -29,7 +49,7 @@ export function Hero() {
     if (!email) return
 
     setLoading(true)
-    
+
     const formData = new FormData(e.currentTarget)
     fetch("https://api.sheetmonkey.io/form/4XeJocvfBTP3Eo9HfBNjr2", {
       method: "POST",
@@ -40,7 +60,6 @@ export function Hero() {
         setEmail("")
       })
       .catch(() => {
-        // Silent fail - Sheet Monkey handles all submissions
         setSubscribed(true)
         setEmail("")
       })
@@ -51,7 +70,6 @@ export function Hero() {
 
   return (
     <>
-      {/* Inline styles – pure left-to-right clip-path reveal, no fade/slide on subheadline */}
       <style jsx global>{`
         @keyframes fadeInUp {
           from {
@@ -63,32 +81,34 @@ export function Hero() {
             transform: translateY(0);
           }
         }
-        @keyframes wipeReveal {
+
+        @keyframes leftToRightChar {
           from {
-            clip-path: inset(0 100% 0 0); /* fully clipped from right */
+            clip-path: inset(0 100% 0 0);
           }
           to {
-            clip-path: inset(0 0 0 0); /* fully revealed left to right */
+            clip-path: inset(0 0 0 0);
           }
         }
+
         .headline-fade {
           opacity: 0;
           animation: fadeInUp 1.2s ease-out forwards;
           animation-delay: 0.3s;
         }
-        .subheadline-container {
-          overflow: hidden;
+
+        .subheadline-char {
           display: inline-block;
-        }
-        .subheadline-reveal {
-          /* Start fully clipped so invisible initially */
           clip-path: inset(0 100% 0 0);
-          animation: wipeReveal 1.8s ease-out forwards;
-          animation-delay: 1.45s; /* starts right after headline finishes */
+          animation: leftToRightChar 0.35s ease-out forwards;
+          white-space: pre;
         }
       `}</style>
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
-        {/* Background Image with Overlay */}
+
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center pt-16"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/images/blueberry-20pancakes.jpg"
@@ -97,29 +117,28 @@ export function Hero() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#3d2b1f]/85 via-[#4a3728]/75 to-[#3d2b1f]/85 opacity-65" />
         </div>
-        {/* Content */}
+
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white px-4 py-2 rounded-full mb-6 border border-white/20">
             <Clock className="h-4 w-4" />
             <span className="text-sm font-medium">Open 7 Days a Week</span>
           </div>
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance border-solid border-foreground border-0 text-card headline-fade"
-          >
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-card headline-fade">
             Johnny's Offshore Café
           </h1>
+
           <p className="text-lg md:text-xl text-white/90 mb-4 max-w-2xl mx-auto text-pretty">
-            <span className="subheadline-container">
-              <span className="subheadline-reveal text-base">
-                A Local Breakfast & Lunch Café in Manahawkin, NJ
-              </span>
-            </span>
+            <AnimatedSubheadline />
           </p>
+
           <div className="hidden md:flex items-center justify-center gap-2 text-white/80 mb-6">
             <MapPin className="h-4 w-4" />
-            <span className="text-sm">100 McKinley Ave, Manahawkin, NJ 08050</span>
+            <span className="text-sm">
+              100 McKinley Ave, Manahawkin, NJ 08050
+            </span>
           </div>
-          {/* Primary and Secondary CTAs */}
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
               size="lg"
@@ -128,6 +147,7 @@ export function Hero() {
             >
               View Menu
             </Button>
+
             <Button
               size="lg"
               variant="outline"
@@ -144,10 +164,12 @@ export function Hero() {
               </a>
             </Button>
           </div>
-          {/* Mini Newsletter Signup - Hidden on mobile, shown on desktop */}
+
           <div className="hidden md:block max-w-sm mx-auto opacity-90">
             {subscribed ? (
-              <p className="text-white/70 text-xs">Thanks for subscribing! Check your email for updates.</p>
+              <p className="text-white/70 text-xs">
+                Thanks for subscribing! Check your email for updates.
+              </p>
             ) : (
               <form onSubmit={handleSubscribe} className="flex gap-2">
                 <Input
@@ -160,8 +182,17 @@ export function Hero() {
                   className="flex-1 h-9 text-sm bg-white/15 border-white/20 text-white placeholder:text-white/50 focus:bg-white/25"
                 />
                 <input type="hidden" name="source" value="hero" />
-                <input type="hidden" name="timestamp" value="x-sheetmonkey-current-date-time" />
-                <input type="hidden" name="local_timestamp" value="" id="local-timestamp-hero" />
+                <input
+                  type="hidden"
+                  name="timestamp"
+                  value="x-sheetmonkey-current-date-time"
+                />
+                <input
+                  type="hidden"
+                  name="local_timestamp"
+                  value=""
+                  id="local-timestamp-hero"
+                />
                 <Button
                   type="submit"
                   size="sm"
@@ -174,8 +205,6 @@ export function Hero() {
             )}
           </div>
         </div>
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"></div>
       </section>
     </>
   )

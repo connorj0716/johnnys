@@ -1,4 +1,5 @@
-
+"use client"
+import { useEffect } from "react"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
@@ -9,10 +10,6 @@ import { Reviews } from "@/components/reviews"
 import { Newsletter } from "@/components/newsletter"
 import { Footer } from "@/components/footer"
 import { MobileCtaBar } from "@/components/mobile-cta-bar"
-
-
-"use client"
-import { useEffect } from "react"
 
 export default function Home() {
   useEffect(() => {
@@ -32,7 +29,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pb-16 md:pb-0">
-      <style jsx global>{\`
+      <style>{`
         .scroll-reveal {
           opacity: 0;
           transform: translateY(30px);
@@ -42,7 +39,7 @@ export default function Home() {
           opacity: 1;
           transform: translateY(0);
         }
-      \`}</style>
+      `}</style>
       <Navbar />
       <Hero />
       <div className="scroll-reveal"><MenuHighlights /></div>

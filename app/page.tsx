@@ -1,3 +1,4 @@
+
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
@@ -9,17 +10,47 @@ import { Newsletter } from "@/components/newsletter"
 import { Footer } from "@/components/footer"
 import { MobileCtaBar } from "@/components/mobile-cta-bar"
 
+
+"use client"
+import { useEffect } from "react"
+
 export default function Home() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in")
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    document.querySelectorAll(".scroll-reveal").forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main className="min-h-screen pb-16 md:pb-0">
+      <style jsx global>{\`
+        .scroll-reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .scroll-reveal.animate-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      \`}</style>
       <Navbar />
       <Hero />
-      <MenuHighlights />
-      <About />
-      <WeeklySpecials />
-      <LocationHours />
-      <Reviews />
-      <Newsletter />
+      <div className="scroll-reveal"><MenuHighlights /></div>
+      <div className="scroll-reveal"><About /></div>
+      <div className="scroll-reveal"><WeeklySpecials /></div>
+      <div className="scroll-reveal"><LocationHours /></div>
+      <div className="scroll-reveal"><Reviews /></div>
+      <div className="scroll-reveal"><Newsletter /></div>
       <Footer />
       <MobileCtaBar />
     </main>

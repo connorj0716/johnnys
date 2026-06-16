@@ -13,7 +13,7 @@ export function Footer() {
             size="lg"
             variant="outline"
             asChild
-            className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-semibold bg-transparent"
+            className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-semibold bg-transparent rounded-full px-8"
           >
             <a href="tel:6096228790">
               <Phone className="mr-2 h-4 w-4" />
@@ -95,6 +95,9 @@ export function Footer() {
           {/* Copyright */}
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60 text-sm">
             © 2026 Johnny's Offshore Café – All Rights Reserved
+          </div>
+          <div className="text-center text-primary-foreground/40 text-xs mt-3">
+            <a href="https://cjresults.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/60 transition-colors">Powered by CJResults</a>
           </div>
         </div>
       </div>

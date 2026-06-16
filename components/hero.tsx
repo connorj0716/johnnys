@@ -102,11 +102,11 @@ export function Hero() {
             alt="Breakfast café in Manahawkin NJ - fresh pancakes at Johnny's Offshore Café"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#3d2b1f]/85 via-[#4a3728]/75 to-[#3d2b1f]/85 opacity-65" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#3d2b1f]/90 via-[#4a3728]/85 to-[#3d2b1f]/90 opacity-80" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white px-4 py-2 rounded-full mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white px-5 py-2 rounded-full mb-6 border border-white/20">
             <Clock className="h-4 w-4" />
             <span className="text-sm font-medium">Open 7 Days a Week</span>
           </div>
@@ -134,7 +134,7 @@ export function Hero() {
             <Button
               size="lg"
               onClick={() => scrollToSection("#menu")}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-10 py-6 text-lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-10 py-6 text-lg rounded-full"
             >
               View Menu
             </Button>
@@ -143,7 +143,7 @@ export function Hero() {
               size="lg"
               variant="outline"
               asChild
-              className="border-white/70 text-white hover:bg-white/20 font-medium px-8 bg-transparent"
+              className="border-white/70 text-white hover:bg-white/20 font-medium px-8 bg-transparent rounded-full"
             >
               <a
                 href="https://www.doordash.com/store/johnny's-offshore-cafe-stafford-township-1143438/"
@@ -170,7 +170,7 @@ export function Hero() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="flex-1 h-9 text-sm bg-white/15 border-white/20 text-white placeholder:text-white/50 focus:bg-white/25"
+                  className="flex-1 h-9 text-sm bg-white/15 border-white/20 text-white placeholder:text-white/50 focus:bg-white/25 rounded-full px-4"
                 />
                 <input type="hidden" name="source" value="hero" />
                 <input
@@ -188,7 +188,7 @@ export function Hero() {
                   type="submit"
                   size="sm"
                   disabled={loading}
-                  className="bg-white/20 hover:bg-white/30 text-white font-medium px-4 h-9"
+                  className="bg-white/20 hover:bg-white/30 text-white font-medium px-4 h-9 rounded-full"
                 >
                   {loading ? "Joining..." : "Join"}
                 </Button>

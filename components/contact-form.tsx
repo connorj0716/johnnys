@@ -81,7 +81,7 @@ export function ContactForm() {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              className="rounded-lg"
+              className="rounded-2xl"
               title="Johnny's Offshore Cafe Location"
             />
           </div>

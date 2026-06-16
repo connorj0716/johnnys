@@ -31,15 +31,15 @@ export function Reviews() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 text-[rgba(0,92,171,1)]">What Locals Say</h2>
-          <p className="text-muted-foreground">Hear from our community!</p>
+          <div className="flex items-center justify-center gap-2 mt-2"><div className="flex gap-0.5">{[...Array(5)].map((_, i) => (<Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />))}</div><span className="text-muted-foreground font-medium">5.0 on Google</span></div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           {reviews.slice(0, 3).map((review, index) => (
-            <Card key={index} className="p-6">
+            <Card key={index} className="p-6 rounded-2xl border-0 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               <p className="text-muted-foreground mb-3 italic">"{review.text}"</p>
@@ -49,7 +49,7 @@ export function Reviews() {
         </div>
 
         <div className="text-center">
-          <Button variant="outline" asChild>
+          <Button variant="outline" asChild className="rounded-full px-8">
             <a
               href="https://www.google.com/maps/search/Johnny's+Offshore+Cafe+Manahawkin/@39.7034796,-74.2646749,17z"
               target="_blank"

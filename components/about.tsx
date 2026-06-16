@@ -33,9 +33,9 @@ export function About() {
             <img
               src="/images/design-mode/johnnys%20exterior.jpg"
               alt="Johnny's Offshore Café interior"
-              className="rounded-2xl shadow-xl w-full px-0"
+              className="rounded-3xl shadow-xl w-full px-0"
             />
-            <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-xl shadow-lg font-semibold">
+            <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-6 py-3 rounded-full shadow-lg font-semibold">
               Nestled Along the Coast
             </div>
           </div>
@@ -54,7 +54,7 @@ export function About() {
             <div className="hidden md:grid grid-cols-2 gap-6">
               {features.map((feature) => (
                 <div key={feature.title} className="flex items-start gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
+                  <div className="p-2 bg-primary/10 rounded-full">
                     <feature.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>

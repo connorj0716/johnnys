@@ -1,5 +1,5 @@
-import { siteConfig } from "@/lib/config"
 "use client"
+import { siteConfig } from "@/lib/config"
 
 import React from "react"
 

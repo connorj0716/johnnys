@@ -1,32 +1,19 @@
+import { Phone, MapPin, UtensilsCrossed } from "lucide-react"
 import Link from "next/link"
-import { UtensilsCrossed, Phone, Navigation } from "lucide-react"
+import { siteConfig } from "@/lib/config"
 
 export function MobileCtaBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background border-t border-border shadow-lg">
-      <div className="flex items-center justify-around py-2 bg-[rgba(62,171,255,1)] border-[rgba(0,121,216,1)]">
-        <Link
-          href="/menu"
-          className="flex flex-col items-center gap-1 px-4 py-2 hover:text-primary/80 transition-colors text-card"
-        >
-          <UtensilsCrossed className="h-5 w-5" />
-          <span className="text-xs font-medium">Menu</span>
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-primary text-primary-foreground border-t border-primary-foreground/20 shadow-xl">
+      <div className="grid grid-cols-3 divide-x divide-primary-foreground/20">
+        <Link href="/menu" className="flex flex-col items-center py-3 hover:bg-primary-foreground/10 transition-colors">
+          <UtensilsCrossed className="h-5 w-5 mb-1" /><span className="text-xs font-medium">Menu</span>
         </Link>
-        <a
-          href="tel:+16096228790"
-          className="flex flex-col items-center gap-1 px-4 py-2 text-primary hover:text-primary/80 transition-colors"
-        >
-          <Phone className="h-5 w-5 text-card" />
-          <span className="text-xs font-medium text-card">Call</span>
+        <a href={`tel:+1${siteConfig.phoneRaw}`} className="flex flex-col items-center py-3 hover:bg-primary-foreground/10 transition-colors">
+          <Phone className="h-5 w-5 mb-1" /><span className="text-xs font-medium">Call</span>
         </a>
-        <a
-          href="https://www.google.com/maps/dir/?api=1&destination=100+McKinley+Ave,+Manahawkin,+NJ+08050"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center gap-1 px-4 py-2 text-primary hover:text-primary/80 transition-colors"
-        >
-          <Navigation className="h-5 w-5 text-card" />
-          <span className="text-xs font-medium text-card">Directions</span>
+        <a href={siteConfig.googleMapsDir} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center py-3 hover:bg-primary-foreground/10 transition-colors">
+          <MapPin className="h-5 w-5 mb-1" /><span className="text-xs font-medium">Directions</span>
         </a>
       </div>
     </div>

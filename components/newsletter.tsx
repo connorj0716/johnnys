@@ -12,7 +12,7 @@ export function Newsletter() {
   useEffect(() => {
     const timestampElement = document.getElementById('local-timestamp-newsletter')
     if (timestampElement) {
-      timestampElement.value = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+      (timestampElement as HTMLInputElement).value = new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
     }
   }, [])
 

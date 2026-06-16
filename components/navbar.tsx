@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/config"
 "use client"
 
 import { useState } from "react"
@@ -36,13 +37,13 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20 text-[rgba(0,123,214,1)] bg-[rgba(219,237,251,1)]">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/johnnys-20best-20logo-20png.webp"
-              alt="Johnny's Offshore Cafe Logo"
+              src={siteConfig.images.logo}
+              alt={siteConfig.name}
               width={56}
               height={56}
               className="rounded-full"
             />
-            <span className="font-bold text-[rgba(0,123,214,1)] text-base">Johnny&apos;s Offshore Café</span>
+            <span className="font-bold text-[rgba(0,123,214,1)] text-base">{siteConfig.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -72,7 +73,7 @@ export function Navbar() {
               </a>
             </Button>
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <a href="tel:+16096228790">Call Now</a>
+              <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
             </Button>
           </div>
 
@@ -111,7 +112,7 @@ export function Navbar() {
                 </a>
               </Button>
               <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground w-fit">
-                <a href="tel:+16096228790">Call Now</a>
+                <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
               </Button>
             </div>
           </div>

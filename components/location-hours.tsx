@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/config"
 import { MapPin, Phone, Clock, Car, Users, ShoppingBag } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -29,7 +30,7 @@ export function LocationHours() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Johnny's Offshore Café Location"
+                title={`${siteConfig.name} Location`}
                 className="absolute inset-0"
               />
             </div>
@@ -46,14 +47,14 @@ export function LocationHours() {
                   <div>
                     <h3 className="font-bold text-foreground text-lg mb-1">Address</h3>
                     <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=100+McKinley+Ave,+Manahawkin,+NJ+08050"
+                      href={siteConfig.googleMapsDir}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      100 McKinley Ave
+                      {siteConfig.address.street}
                       <br />
-                      Manahawkin, NJ 08050
+                      {`${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`}
                     </a>
                   </div>
                 </div>
@@ -69,10 +70,10 @@ export function LocationHours() {
                   <div>
                     <h3 className="font-bold text-foreground text-lg mb-1">Phone</h3>
                     <a
-                      href="tel:6096228790"
+                      href={`tel:${siteConfig.phoneRaw}`}
                       className="text-primary hover:text-primary/80 font-semibold text-lg transition-colors"
                     >
-                      (609) 622-8790
+                      {siteConfig.phone}
                     </a>
                   </div>
                 </div>

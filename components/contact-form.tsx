@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/config"
 "use client"
 
 import React from "react"
@@ -22,7 +23,7 @@ export function ContactForm() {
     <section className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Get in Touch with Johnny's Offshore Café
+          Get in Touch with {siteConfig.name}
         </h1>
         <p className="text-muted-foreground">
           We'd love to hear from you. Reach out with any questions or inquiries.
@@ -40,13 +41,13 @@ export function ContactForm() {
               <div>
                 <h3 className="font-medium mb-1">Address</h3>
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=100+McKinley+Ave,+Manahawkin,+NJ+08050"
+                  href={siteConfig.googleMapsDir}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  100 McKinley Ave<br />
-                  Manahawkin, NJ 08050
+                  {siteConfig.address.street}<br />
+                  {`${siteConfig.address.city}, ${siteConfig.address.state} ${siteConfig.address.zip}`}
                 </a>
               </div>
             </div>
@@ -55,8 +56,8 @@ export function ContactForm() {
               <Phone className="h-5 w-5 text-primary mt-1" />
               <div>
                 <h3 className="font-medium mb-1">Phone</h3>
-                <a href="tel:+16096228790" className="text-muted-foreground hover:text-primary transition-colors">
-                  (609) 622-8790
+                <a href={`tel:+1${siteConfig.phoneRaw}`} className="text-muted-foreground hover:text-primary transition-colors">
+                  {siteConfig.phone}
                 </a>
               </div>
             </div>
@@ -82,7 +83,7 @@ export function ContactForm() {
               allowFullScreen
               loading="lazy"
               className="rounded-2xl"
-              title="Johnny's Offshore Cafe Location"
+              title="{siteConfig.name} Location"
             />
           </div>
         </Card>

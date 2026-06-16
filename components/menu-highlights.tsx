@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -33,8 +34,31 @@ const menuItems = [
 ]
 
 export function MenuHighlights() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll(".menu-card")
+            cards.forEach((card, i) => {
+              setTimeout(() => {
+                (card as HTMLElement).style.opacity = "1";
+                (card as HTMLElement).style.transform = "translateY(0)"
+              }, 300 * (i + 1))
+            })
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="menu" className="py-20 bg-background">
+    <section id="menu" className="py-20 bg-background" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -45,11 +69,12 @@ export function MenuHighlights() {
         </div>
 
         {/* Menu Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12 max-w-5xl mx-auto">
           {menuItems.map((item) => (
             <Card
               key={item.name}
-              className={`overflow-hidden group hover:shadow-lg transition-shadow border-border px-0 mx-0 my-0 py-2.5 ${item.featured ? "ring-2 ring-accent" : ""}`}
+              className={`menu-card overflow-hidden group hover:shadow-lg transition-all duration-700 border-border px-0 mx-0 my-0 py-2.5 rounded-2xl ${item.featured ? "ring-2 ring-accent" : ""}`}
+              style={{ opacity: 0, transform: "translateY(30px)" }}
             >
               <div className="relative h-64 overflow-hidden">
                 <img
@@ -59,7 +84,7 @@ export function MenuHighlights() {
                   style={{ objectPosition: (item as any).imagePosition || "center" }}
                 />
                 {item.featured && (
-                  <div className="absolute top-2 right-2 bg-accent text-accent-foreground text-xs font-semibold px-2 py-1 rounded">
+                  <div className="absolute top-2 right-2 bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 rounded-full">
                     Top Seller 
                   </div>
                 )}
@@ -79,7 +104,7 @@ export function MenuHighlights() {
           <p className="text-muted-foreground mb-6">
             See our complete menu with all breakfast, lunch, and dinner options!
           </p>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-xl">
+          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-xl rounded-full">
             <Link href="/menu">View Full Menu</Link>
           </Button>
         </div>

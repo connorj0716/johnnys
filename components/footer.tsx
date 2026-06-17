@@ -19,7 +19,7 @@ export function Footer() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <Image src={siteConfig.images.logo} alt={siteConfig.name} width={48} height={48} className="rounded-full" />
+                {siteConfig.images.logo ? <Image src={siteConfig.images.logo} alt={siteConfig.name} width={48} height={48} className="rounded-full" /> : <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold text-xl">{siteConfig.name.charAt(0)}</div>}
                 <span className="font-bold text-xl">{siteConfig.name}</span>
               </div>
               <p className="text-primary-foreground/80">A celebration of flavors and community</p>

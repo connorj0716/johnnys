@@ -1,88 +1,81 @@
+"use client"
 import { siteConfig } from "@/lib/config"
 import type React from "react"
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "Johnny's Offshore Café | Breakfast & Lunch Café in Manahawkin, NJ",
-  description:
-    "Johnny's Offshore Café is a family-owned breakfast and lunch café in Manahawkin, NJ near LBI. Serving fresh, hearty meals daily with all-day breakfast, homemade specials, and friendly service.",
-  keywords: ["breakfast café Manahawkin NJ", "lunch café Manahawkin", "breakfast near LBI", "Stafford Township restaurant", "Manahawkin diner", "all-day breakfast NJ"],
-  generator: "v0.app",
-  icons: {
-    icon: "/favicon.ico",
-  },
-  openGraph: {
-    title: "Johnny's Offshore Café | Breakfast & Lunch Café in Manahawkin, NJ",
-    description: "Family-owned breakfast and lunch café in Manahawkin, NJ near LBI. Fresh, hearty meals served daily.",
-    type: "website",
-    locale: "en_US",
-  },
-}
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Johnny's Offshore Café",
-  "image": "/images/johnnys-20logo-20png.png",
-  "url": "https://www.johnnysoffshore.com",
-  "telephone": "+1-609-622-8790",
-  "priceRange": "$$",
-  "servesCuisine": ["American", "Breakfast", "Lunch", "Dinner"],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "100 McKinley Ave",
-    "addressLocality": "Manahawkin",
-    "addressRegion": "NJ",
-    "postalCode": "08050",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 39.7034796,
-    "longitude": -74.2646749
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Monday",
-      "opens": "07:00",
-      "closes": "14:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "07:00",
-      "closes": "18:00"
-    }
-  ],
-  "menu": "/menu",
-  "acceptsReservations": "false",
-  "hasMenu": {
-    "@type": "Menu",
-    "url": "/menu"
-  }
-}
+import { useEffect } from "react"
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  useEffect(() => {
+    document.title = siteConfig.seo.title
+    
+    const setMeta = (name: string, content: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`) || document.querySelector(`meta[property="${name}"]`)
+      if (!el) {
+        el = document.createElement("meta")
+        if (name.startsWith("og:")) {
+          el.setAttribute("property", name)
+        } else {
+          el.setAttribute("name", name)
+        }
+        document.head.appendChild(el)
+      }
+      el.setAttribute("content", content)
+    }
+    
+    setMeta("description", siteConfig.seo.description)
+    setMeta("og:title", siteConfig.seo.title)
+    setMeta("og:description", siteConfig.seo.description)
+    setMeta("og:type", "website")
+    
+    // Set favicon
+    let link = document.querySelector("link[rel=\'icon\']") as HTMLLinkElement
+    if (!link) {
+      link = document.createElement("link")
+      link.rel = "icon"
+      document.head.appendChild(link)
+    }
+    link.href = "/favicon.ico"
+    
+    // Inject JSON-LD schema
+    const existingScript = document.querySelector("script[type=\'application/ld+json\']")
+    if (existingScript) existingScript.remove()
+    
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": siteConfig.name,
+      "telephone": siteConfig.phone,
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteConfig.address.street,
+        "addressLocality": siteConfig.address.city,
+        "addressRegion": siteConfig.address.state,
+        "postalCode": siteConfig.address.zip,
+        "addressCountry": "US"
+      },
+      "url": typeof window !== "undefined" ? window.location.href : "",
+      "menu": "/menu",
+    }
+    
+    const script = document.createElement("script")
+    script.type = "application/ld+json"
+    script.textContent = JSON.stringify(schema)
+    document.head.appendChild(script)
+  }, [])
+
   return (
     <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <title>{siteConfig.seo.title}</title>
+        <meta name="description" content={siteConfig.seo.description} />
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className="font-sans antialiased">
         {children}
         <Analytics />
       </body>

@@ -37,7 +37,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20 text-[rgba(0,123,214,1)] bg-[rgba(219,237,251,1)]">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src={siteConfig.images.logo}
+              src={siteConfig.images.logo || ""}
               alt={siteConfig.name}
               width={56}
               height={56}

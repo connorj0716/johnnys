@@ -23,7 +23,7 @@ export function LocationHours() {
           <Card className="overflow-hidden border-border">
             <div className="relative h-80 md:h-full min-h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3061.8834743284384!2d-74.26467492354969!3d39.70347960079066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c19d8d8d8d8d8d%3A0x8d8d8d8d8d8d8d8d!2s100%20McKinley%20Ave%2C%20Manahawkin%2C%20NJ%2008050!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
+                src={siteConfig.googleMapsEmbed}
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: "320px" }}

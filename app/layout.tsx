@@ -19,11 +19,20 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         {siteConfig.colors && (
           <style dangerouslySetInnerHTML={{ __html: `
-            :root {
+            :root, .dark {
               --primary: ${siteConfig.colors.primary} !important;
               --primary-foreground: #ffffff !important;
               --accent: ${siteConfig.colors.accent} !important;
               --accent-foreground: #ffffff !important;
+              --secondary: #f8fafc !important;
+              --secondary-foreground: #1e293b !important;
+              --muted: #f1f5f9 !important;
+              --muted-foreground: #64748b !important;
+              --background: #ffffff !important;
+              --foreground: #1e293b !important;
+              --card: #ffffff !important;
+              --card-foreground: #1e293b !important;
+              --border: #e2e8f0 !important;
             }
           `}} />
         )}

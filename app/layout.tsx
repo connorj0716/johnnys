@@ -1,79 +1,51 @@
-"use client"
 import { siteConfig } from "@/lib/config"
 import type React from "react"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import { useEffect } from "react"
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  useEffect(() => {
-    document.title = siteConfig.seo.title
-    
-    const setMeta = (name: string, content: string) => {
-      let el = document.querySelector(`meta[name="${name}"]`) || document.querySelector(`meta[property="${name}"]`)
-      if (!el) {
-        el = document.createElement("meta")
-        if (name.startsWith("og:")) {
-          el.setAttribute("property", name)
-        } else {
-          el.setAttribute("name", name)
-        }
-        document.head.appendChild(el)
-      }
-      el.setAttribute("content", content)
-    }
-    
-    setMeta("description", siteConfig.seo.description)
-    setMeta("og:title", siteConfig.seo.title)
-    setMeta("og:description", siteConfig.seo.description)
-    setMeta("og:type", "website")
-    
-    // Set favicon
-    let link = document.querySelector("link[rel=\'icon\']") as HTMLLinkElement
-    if (!link) {
-      link = document.createElement("link")
-      link.rel = "icon"
-      document.head.appendChild(link)
-    }
-    link.href = "/favicon.ico"
-    
-    // Inject JSON-LD schema
-    const existingScript = document.querySelector("script[type=\'application/ld+json\']")
-    if (existingScript) existingScript.remove()
-    
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": siteConfig.name,
-      "telephone": siteConfig.phone,
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": siteConfig.address.street,
-        "addressLocality": siteConfig.address.city,
-        "addressRegion": siteConfig.address.state,
-        "postalCode": siteConfig.address.zip,
-        "addressCountry": "US"
-      },
-      "url": typeof window !== "undefined" ? window.location.href : "",
-      "menu": "/menu",
-    }
-    
-    const script = document.createElement("script")
-    script.type = "application/ld+json"
-    script.textContent = JSON.stringify(schema)
-    document.head.appendChild(script)
-  }, [])
-
   return (
     <html lang="en">
       <head>
         <title>{siteConfig.seo.title}</title>
         <meta name="description" content={siteConfig.seo.description} />
+        <meta property="og:title" content={siteConfig.seo.title} />
+        <meta property="og:description" content={siteConfig.seo.description} />
+        <meta property="og:type" content="website" />
+        <link rel="icon" href="/favicon.ico" />
+        {siteConfig.colors && (
+          <style dangerouslySetInnerHTML={{ __html: `
+            :root {
+              --primary: ${siteConfig.colors.primary} !important;
+              --primary-foreground: #ffffff !important;
+              --accent: ${siteConfig.colors.accent} !important;
+              --accent-foreground: #ffffff !important;
+            }
+          `}} />
+        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": siteConfig.name,
+            "telephone": siteConfig.phone,
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": siteConfig.address.street,
+              "addressLocality": siteConfig.address.city,
+              "addressRegion": siteConfig.address.state,
+              "postalCode": siteConfig.address.zip,
+              "addressCountry": "US"
+            },
+            "menu": "/menu",
+          })}}
+        />
       </head>
       <body className="font-sans antialiased">
         {children}

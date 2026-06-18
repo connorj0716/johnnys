@@ -47,7 +47,7 @@ export function Newsletter() {
     <section id="newsletter" className="py-12 md:py-16 bg-accent/10">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-[rgba(20,94,169,1)]">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-primary">
             Weekly Updates & Specials
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">

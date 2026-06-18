@@ -10,7 +10,7 @@ const amenities = [
 
 export function LocationHours() {
   return (
-    <section id="location" className="py-20 bg-[rgba(243,250,255,1)]">
+    <section id="location" className="py-20 bg-accent">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">

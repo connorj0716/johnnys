@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/config"
 export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="py-8 bg-[rgba(62,171,255,1)]">
+      <div className="py-8 bg-accent">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-accent-foreground mb-4">See You Soon!</h3>
           <Button size="lg" variant="outline" asChild className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-semibold bg-transparent rounded-full px-8">

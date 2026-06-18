@@ -5,7 +5,7 @@ import { Sparkles } from "lucide-react"
 
 export function WeeklySpecials() {
   return (
-    <section id="specials" className="py-16 bg-[rgba(235,244,250,1)]">
+    <section id="specials" className="py-16 bg-accent">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full mb-4">

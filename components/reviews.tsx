@@ -33,7 +33,7 @@ export function Reviews() {
     <section className="py-16 bg-muted/30" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-[rgba(0,92,171,1)]">What Locals Say</h2>
+          <h2 className="text-3xl font-bold mb-2 text-primary">What Locals Say</h2>
           <div className="flex items-center justify-center gap-2 mt-2">
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (<Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />))}

@@ -76,7 +76,7 @@ export function ContactForm() {
 
           <div className="mt-6">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3071.8847892847!2d-74.26713368461894!3d39.70347797945726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c0ee1c0e0e0e0e%3A0x0e0e0e0e0e0e0e0e!2s100%20McKinley%20Ave%2C%20Manahawkin%2C%20NJ%2008050!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+              src={siteConfig.googleMapsEmbed}
               width="100%"
               height="200"
               style={{ border: 0 }}

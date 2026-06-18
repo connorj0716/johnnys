@@ -32,9 +32,9 @@ export function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-[rgba(255,255,255,1)] text-[rgba(244,244,244,1)] bg-[rgba(219,237,251,1)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-[rgba(0,123,214,1)] border-[rgba(244,244,244,1)] bg-[rgba(219,237,251,1)]">
-        <div className="flex items-center justify-between h-20 text-[rgba(0,123,214,1)] bg-[rgba(219,237,251,1)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-[rgba(255,255,255,1)] text-primary bg-accent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-primary border-[rgba(244,244,244,1)] bg-accent">
+        <div className="flex items-center justify-between h-20 text-primary bg-accent">
           <Link href="/" className="flex items-center gap-3">
             <Image
               src={siteConfig.images.logo || ""}
@@ -43,7 +43,7 @@ export function Navbar() {
               height={56}
               className="rounded-full"
             />
-            <span className="font-bold text-[rgba(0,123,214,1)] text-base">{siteConfig.name}</span>
+            <span className="font-bold text-primary text-base">{siteConfig.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -64,7 +64,7 @@ export function Navbar() {
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
             >
               <a
-                href="https://www.doordash.com/store/johnny's-offshore-cafe-stafford-township-1143438/"
+                href={siteConfig.orderOnline || "#menu"}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -103,7 +103,7 @@ export function Navbar() {
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground w-fit bg-transparent"
               >
                 <a
-                  href="https://www.doordash.com/store/johnny's-offshore-cafe-stafford-township-1143438/"
+                  href={siteConfig.orderOnline || "#menu"}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -43,7 +43,7 @@ export function Navbar() {
               height={56}
               className="rounded-full"
             />
-            <span className="font-bold text-primary text-base">{siteConfig.name}</span>
+            <span className="font-bold text-accent-foreground text-base">{siteConfig.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -53,7 +53,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
+                className="text-accent-foreground/80 hover:text-accent-foreground transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -92,7 +92,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-muted-foreground hover:text-primary transition-colors font-medium text-left"
+                  className="text-accent-foreground/80 hover:text-accent-foreground transition-colors font-medium text-left"
                 >
                   {link.label}
                 </Link>

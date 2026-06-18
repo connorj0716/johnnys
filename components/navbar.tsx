@@ -43,7 +43,7 @@ export function Navbar() {
               height={56}
               className="rounded-full"
             />
-            <span className="font-bold text-accent-foreground text-base">{siteConfig.name}</span>
+            <span className="font-bold text-accent-foreground text-base" style={{fontFamily: "var(--font-heading)"}}>{siteConfig.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,7 +61,7 @@ export function Navbar() {
             <Button
               asChild
               variant="outline"
-              className="border-accent-foreground text-accent-foreground hover:bg-white hover:text-accent bg-transparent"
+              className="border-2 border-white text-white hover:bg-white hover:text-accent bg-transparent font-semibold" style={{fontFamily: "var(--font-heading)"}}
             >
               <a
                 href={siteConfig.orderOnline || "#menu"}
@@ -72,7 +72,7 @@ export function Navbar() {
                 Order Online
               </a>
             </Button>
-            <Button asChild className="bg-white hover:bg-white/90 text-accent">
+            <Button asChild className="bg-white hover:bg-white/90 text-accent font-semibold ring-1 ring-black/10" style={{fontFamily: "var(--font-heading)"}}>
               <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
             </Button>
           </div>
@@ -100,7 +100,7 @@ export function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="border-accent-foreground text-accent-foreground hover:bg-white hover:text-accent w-fit bg-transparent"
+                className="border-2 border-white text-white hover:bg-white hover:text-accent w-fit bg-transparent font-semibold" style={{fontFamily: "var(--font-heading)"}}
               >
                 <a
                   href={siteConfig.orderOnline || "#menu"}
@@ -111,7 +111,7 @@ export function Navbar() {
                   Order Online
                 </a>
               </Button>
-              <Button asChild className="bg-white hover:bg-white/90 text-accent w-fit">
+              <Button asChild className="bg-white hover:bg-white/90 text-accent w-fit font-semibold ring-1 ring-black/10" style={{fontFamily: "var(--font-heading)"}}>
                 <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
               </Button>
             </div>

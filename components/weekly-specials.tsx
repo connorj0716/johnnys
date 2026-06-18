@@ -19,7 +19,7 @@ export function WeeklySpecials() {
           <p className="text-accent-foreground/80 mb-4">
             Every week we feature fresh, limited-time deals and specials. Get the full weekly specials delivered straight to your inbox!
           </p>
-          <Button className="text-base bg-white text-accent hover:bg-white/90 rounded-full" size="lg" asChild>
+          <Button style={{fontFamily: "var(--font-heading)"}} className="text-base bg-white text-accent hover:bg-white/90 rounded-full" size="lg" asChild>
             <a href="#newsletter">Get Full Weekly Specials – Join Newsletter!</a>
           </Button>
         </div>

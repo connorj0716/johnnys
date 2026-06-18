@@ -9,7 +9,7 @@ export function Footer() {
       <div className="py-8 bg-accent">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-accent-foreground mb-4">See You Soon!</h3>
-          <Button size="lg" variant="outline" asChild className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-semibold bg-transparent rounded-full px-8">
+          <Button style={{fontFamily: "var(--font-heading)"}} size="lg" variant="outline" asChild className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent font-semibold bg-transparent rounded-full px-8">
             <a href={`tel:${siteConfig.phoneRaw}`}><Phone className="mr-2 h-4 w-4" />Call Ahead: {siteConfig.phone}</a>
           </Button>
         </div>

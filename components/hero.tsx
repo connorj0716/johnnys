@@ -63,11 +63,11 @@ export function Hero() {
             <span className="text-sm">{siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}</span>
           </div>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button size="lg" onClick={() => scrollToSection("#menu")} className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-6 text-lg rounded-full ring-2 ring-white/30 transition-all hover:scale-105" style={{fontFamily: "var(--font-heading)"}}>
+            <Button size="lg" onClick={() => scrollToSection("#menu")} className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-bold px-10 py-6 text-lg rounded-full transition-all hover:scale-105" style={{fontFamily: "var(--font-heading)"}}>
               View Menu
             </Button>
             {siteConfig.orderOnline && (
-              <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-accent font-bold px-8 bg-transparent rounded-full transition-all hover:scale-105" style={{fontFamily: "var(--font-heading)"}}>
+              <Button size="lg" variant="outline" asChild className="bg-white border-2 border-black text-black hover:bg-black hover:text-white font-bold px-8 rounded-full transition-all hover:scale-105" style={{fontFamily: "var(--font-heading)"}}>
                 <a href={siteConfig.orderOnline} target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="h-5 w-5 mr-2" />Order Online
                 </a>

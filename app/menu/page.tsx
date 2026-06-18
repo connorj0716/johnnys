@@ -23,7 +23,7 @@ export default function MenuPage() {
             This is a preview — we will customize this page with your actual menu during setup.
           </p>
           {siteConfig.orderOnline && (
-            <Button asChild size="lg" className="rounded-full px-8 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold mb-12">
+            <Button asChild size="lg" className="rounded-full px-12 py-6 text-lg bg-white border-2 border-black text-black hover:bg-black hover:text-white font-bold mb-12 transition-all hover:scale-105" style={{fontFamily: "var(--font-heading)"}}>
               <a href={siteConfig.orderOnline} target="_blank" rel="noopener noreferrer">Order Online</a>
             </Button>
           )}

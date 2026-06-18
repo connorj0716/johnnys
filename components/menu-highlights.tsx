@@ -33,7 +33,7 @@ export function MenuHighlights() {
     <section id="menu" className="py-20 bg-background" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Discover Our Top Sellers</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Top Sellers</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Choice from a variety of options</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12 max-w-5xl mx-auto">

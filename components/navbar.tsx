@@ -32,9 +32,9 @@ export function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-[rgba(255,255,255,1)] text-primary bg-accent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-primary border-[rgba(244,244,244,1)] bg-accent">
-        <div className="flex items-center justify-between h-20 text-primary bg-accent">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-[rgba(255,255,255,1)] text-accent-foreground bg-accent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-accent-foreground border-[rgba(244,244,244,1)] bg-accent">
+        <div className="flex items-center justify-between h-20 text-accent-foreground bg-accent">
           <Link href="/" className="flex items-center gap-3">
             <Image
               src={siteConfig.images.logo || ""}
@@ -61,7 +61,7 @@ export function Navbar() {
             <Button
               asChild
               variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+              className="border-accent-foreground text-accent-foreground hover:bg-white hover:text-accent bg-transparent"
             >
               <a
                 href={siteConfig.orderOnline || "#menu"}
@@ -72,7 +72,7 @@ export function Navbar() {
                 Order Online
               </a>
             </Button>
-            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Button asChild className="bg-white hover:bg-white/90 text-accent">
               <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
             </Button>
           </div>
@@ -100,7 +100,7 @@ export function Navbar() {
               <Button
                 asChild
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground w-fit bg-transparent"
+                className="border-accent-foreground text-accent-foreground hover:bg-white hover:text-accent w-fit bg-transparent"
               >
                 <a
                   href={siteConfig.orderOnline || "#menu"}
@@ -111,7 +111,7 @@ export function Navbar() {
                   Order Online
                 </a>
               </Button>
-              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground w-fit">
+              <Button asChild className="bg-white hover:bg-white/90 text-accent w-fit">
                 <a href={`tel:+1${siteConfig.phoneRaw}`}>Call Now</a>
               </Button>
             </div>

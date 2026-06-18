@@ -8,19 +8,18 @@ export function WeeklySpecials() {
     <section id="specials" className="py-16 bg-accent">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-2 rounded-full mb-4">
             <Sparkles className="h-4 w-4" />
             <span className="text-sm font-medium">Weekly Specials</span>
           </div>
-          <h2 className="text-3xl font-bold mb-2 text-center text-primary">Check Our Weekly Specials</h2>
-          <p className="text-muted-foreground text-center">Great deals throughout the week!</p>
+          <h2 className="text-3xl font-bold mb-2 text-center text-accent-foreground">Check Our Weekly Specials</h2>
+          <p className="text-accent-foreground/80 text-center">Great deals throughout the week!</p>
         </div>
         <div className="max-w-2xl mx-auto text-center mb-8">
-          <p className="text-muted-foreground mb-4">
-            Every week we feature fresh, limited-time deals like specialty pancakes, hot sandwiches, and more. Get the full weekly specials delivered straight to your inbox—be the first to know!
+          <p className="text-accent-foreground/80 mb-4">
+            Every week we feature fresh, limited-time deals and specials. Get the full weekly specials delivered straight to your inbox!
           </p>
-         
-          <Button className="text-base" size="lg" asChild>
+          <Button className="text-base bg-white text-accent hover:bg-white/90 rounded-full" size="lg" asChild>
             <a href="#newsletter">Get Full Weekly Specials – Join Newsletter!</a>
           </Button>
         </div>

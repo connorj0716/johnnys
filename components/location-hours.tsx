@@ -14,8 +14,8 @@ export function LocationHours() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Find Us &amp; Visit!</h2>
-          <p className="text-muted-foreground text-lg">We're your go-to spot near LBI and Stafford Township!</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accent-foreground">Find Us &amp; Visit!</h2>
+          <p className="text-accent-foreground/80 text-lg">We're your go-to spot near LBI and Stafford Township!</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -42,7 +42,7 @@ export function LocationHours() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <MapPin className="h-6 w-6 text-primary" />
+                    <MapPin className="h-6 w-6 text-accent-foreground" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground text-lg mb-1">Address</h3>
@@ -50,7 +50,7 @@ export function LocationHours() {
                       href={siteConfig.googleMapsDir}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
                     >
                       {siteConfig.address.street}
                       <br />
@@ -65,13 +65,13 @@ export function LocationHours() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <Phone className="h-6 w-6 text-primary" />
+                    <Phone className="h-6 w-6 text-accent-foreground" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground text-lg mb-1">Phone</h3>
                     <a
                       href={`tel:${siteConfig.phoneRaw}`}
-                      className="text-primary hover:text-primary/80 font-semibold text-lg transition-colors"
+                      className="text-accent-foreground hover:text-accent-foreground/80 font-semibold text-lg transition-colors"
                     >
                       {siteConfig.phone}
                     </a>
@@ -84,11 +84,11 @@ export function LocationHours() {
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-primary/10 rounded-xl">
-                    <Clock className="h-6 w-6 text-primary" />
+                    <Clock className="h-6 w-6 text-accent-foreground" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground text-lg mb-1">Hours</h3>
-                    <div className="text-muted-foreground space-y-1">
+                    <div className="text-accent-foreground/80 space-y-1">
                       <p>
                         <span className="font-semibold text-foreground">Monday:</span> 7am - 2pm
                       </p>
@@ -108,8 +108,8 @@ export function LocationHours() {
                   key={amenity.text}
                   className="flex items-center gap-2 bg-background px-4 py-2 rounded-full border border-border"
                 >
-                  <amenity.icon className="h-4 w-4 text-primary" />
-                  <span className="text-sm text-muted-foreground">{amenity.text}</span>
+                  <amenity.icon className="h-4 w-4 text-accent-foreground" />
+                  <span className="text-sm text-accent-foreground/80">{amenity.text}</span>
                 </div>
               ))}
             </div>

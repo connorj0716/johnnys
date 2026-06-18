@@ -55,7 +55,7 @@ export function MenuHighlights() {
         </div>
         <div className="text-center">
           <p className="text-muted-foreground mb-6">See our complete menu with all options!</p>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 shadow-xl rounded-full">
+          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-12 py-4 text-lg shadow-xl rounded-full ring-2 ring-accent/30 ring-offset-2 transition-all hover:scale-105">
             <Link href="/menu">View Full Menu</Link>
           </Button>
         </div>

@@ -25,14 +25,15 @@ export default function RootLayout({
               --accent: ${siteConfig.colors.accent} !important;
               --accent-foreground: #ffffff !important;
               --secondary: #f8fafc !important;
-              --secondary-foreground: #1e293b !important;
+              --secondary-foreground: ${siteConfig.colors.primary} !important;
               --muted: #f1f5f9 !important;
-              --muted-foreground: #64748b !important;
+              --muted-foreground: #475569 !important;
               --background: #ffffff !important;
               --foreground: #1e293b !important;
               --card: #ffffff !important;
               --card-foreground: #1e293b !important;
               --border: #e2e8f0 !important;
+              --ring: ${siteConfig.colors.accent} !important;
             }
           `}} />
         )}

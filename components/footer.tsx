@@ -22,15 +22,15 @@ export function Footer() {
                 {siteConfig.images.logo ? <Image src={siteConfig.images.logo} alt={siteConfig.name} width={48} height={48} className="rounded-full" /> : <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold text-xl">{siteConfig.name.charAt(0)}</div>}
                 <span className="font-bold text-xl">{siteConfig.name}</span>
               </div>
-              <p className="text-primary-foreground/80">A celebration of flavors and community</p>
+              <p className="text-primary-foreground">A celebration of flavors and community</p>
             </div>
             <div>
               <h4 className="font-bold text-lg mb-4">Contact</h4>
               <div className="space-y-3">
-                <a href={`tel:${siteConfig.phoneRaw}`} className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href={`tel:${siteConfig.phoneRaw}`} className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground transition-colors">
                   <Phone className="h-4 w-4" />{siteConfig.phone}
                 </a>
-                <div className="flex items-start gap-2 text-primary-foreground/80">
+                <div className="flex items-start gap-2 text-primary-foreground">
                   <MapPin className="h-4 w-4 mt-1 shrink-0" />
                   <span>{siteConfig.address.street}<br />{siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}</span>
                 </div>
@@ -44,11 +44,11 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60 text-sm">
+          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/90 text-sm">
             &copy; {new Date().getFullYear()} {siteConfig.name} &ndash; All Rights Reserved
           </div>
-          <div className="text-center text-primary-foreground/40 text-xs mt-3">
-            <a href="https://cjresults.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/60 transition-colors">Powered by CJResults</a>
+          <div className="text-center text-primary-foreground/80 text-xs mt-3">
+            <a href="https://cjresults.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground/90 transition-colors">Powered by CJResults</a>
           </div>
         </div>
       </div>

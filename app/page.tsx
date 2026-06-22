@@ -8,6 +8,9 @@ import { WeeklySpecials } from "@/components/weekly-specials"
 import { LocationHours } from "@/components/location-hours"
 import { Reviews } from "@/components/reviews"
 import { Newsletter } from "@/components/newsletter"
+import { TrustBar } from "@/components/trust-bar"
+import { FAQ } from "@/components/faq"
+import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { MobileCtaBar } from "@/components/mobile-cta-bar"
 
@@ -42,12 +45,15 @@ export default function Home() {
       `}</style>
       <Navbar />
       <Hero />
+      <TrustBar />
       <div className="scroll-reveal"><MenuHighlights /></div>
       <div className="scroll-reveal"><About /></div>
       <div className="scroll-reveal"><WeeklySpecials /></div>
       <div className="scroll-reveal"><LocationHours /></div>
       <div className="scroll-reveal"><Reviews /></div>
       <div className="scroll-reveal"><Newsletter /></div>
+      <div className="scroll-reveal"><FAQ /></div>
+      <div className="scroll-reveal"><CtaSection /></div>
       <Footer />
       <MobileCtaBar />
     </main>
